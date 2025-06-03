@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel(
     private val appRepository: AppRepository,
@@ -22,11 +23,20 @@ class HomeViewModel(
 ) : ViewModel() {
     sealed interface UiState {
         data object Loading: UiState
-        data class Success(val posts: List<Post>, val users: List<User>, val firstName: String, val lastName: String) : UiState
+        data class Success(val posts: List<Post>, val users: List<User>, val firstName: String, val lastName: String, val filter: String = "", val favoritePostIds: Set<Int> = emptySet() ) : UiState
         data class Error(val message: String) : UiState
     }
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
-    val uiState: StateFlow<UiState> = _uiState
+    private val _favoritePostIds = MutableStateFlow<Set<Int>>(emptySet())
+
+    val uiState: StateFlow<UiState> = combine(
+        _uiState,
+        _favoritePostIds
+    ) { state, favorites ->
+        if (state is UiState.Success) {
+            state.copy(favoritePostIds = favorites)
+        } else state
+    }.stateIn(viewModelScope, kotlinx.coroutines.flow.SharingStarted.Eagerly, UiState.Loading)
 
     init {
         fetchData()
@@ -60,5 +70,22 @@ class HomeViewModel(
                 HomeViewModel(appRepository, prefs)
             }
         }
+    }
+
+    fun onFilterChange(newFilter: String) {
+        val currentState = _uiState.value
+        if (currentState is UiState.Success) {
+            _uiState.value = currentState.copy(filter = newFilter)
+        }
+    }
+
+    fun toggleFavorite(post: Post) {
+        val current = _favoritePostIds.value.toMutableSet()
+        if (current.contains(post.id)) {
+            current.remove(post.id)
+        } else {
+            current.add(post.id)
+        }
+        _favoritePostIds.value = current
     }
 }
