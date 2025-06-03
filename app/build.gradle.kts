@@ -67,10 +67,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
-
-    implementation (libs.maps.compose)
-
     implementation (libs.androidx.datastore.preferences)
-    implementation("androidx.compose.material3:material3:1.3.2")
-
+    implementation (libs.maps.compose)
 }

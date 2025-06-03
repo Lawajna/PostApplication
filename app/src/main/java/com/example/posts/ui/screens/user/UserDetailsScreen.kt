@@ -13,6 +13,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
 
 @SuppressLint("UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -96,7 +102,25 @@ fun UserDetailsScreen(
                                 Text("Strona: ${user.website}")
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Text("Firma: ${user.company.name}")
-                                Text("Adres: ${user.address.street}, ${user.address.number} ${user.address.city} (${user.address.zipcode})")
+                                Text("Adres: ${user.address.street}, ${user.address.city} (${user.address.zipcode})")
+                                val lat = user.address.geo.lat.toDoubleOrNull() ?: 0.0
+                                val lng = user.address.geo.lng.toDoubleOrNull() ?: 0.0
+                                val userLocation = LatLng(lat, lng)
+                                val cameraPositionState = rememberCameraPositionState {
+                                    position = CameraPosition.fromLatLngZoom(userLocation, 12f)
+                                }
+                                GoogleMap(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(300.dp),
+                                    cameraPositionState = cameraPositionState
+                                ) {
+                                    Marker(
+                                        state = MarkerState(position = userLocation),
+                                        title = user.name,
+                                        snippet = "${user.address.street}, ${user.address.city}"
+                                    )
+                                }
                             }
                         }
                     }
