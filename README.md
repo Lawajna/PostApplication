@@ -35,10 +35,11 @@ Działanie:
 
 Działanie:  
 
+![Nagrywanie-ekranu-2025-06-04-085314](https://github.com/user-attachments/assets/f4ab41eb-022d-4c82-9ace-360eaa9123ff)
 
 ---
 
-### Informacje o użytkowniku
+### Informacje o autorze posta
 - Aplikacja pobiera profil użytkownika oraz jego listę zadań.
 - Pokazywane informacje obejmują:
   - Imię i nazwisko
@@ -52,6 +53,18 @@ Działanie:
 
 Działanie:  
 
+![Nagrywanie-ekranu-2025-06-04-085036](https://github.com/user-attachments/assets/ef3c762e-9d06-4e79-8cce-c27815721af9)
+
+---
+
+### Profil użytkownika
+- Zmiana i zapisanie imienia i nazwiska
+- Wybór i zapisanie zdjęcia użytkownika
+- Powrót do strony głównej
+
+Działanie: 
+
+![Nagrywanie-ekranu-2025-06-04-085036](https://github.com/user-attachments/assets/2a212dcb-e22d-4cdd-b2b1-6d2941609dc3)
 
 ---
 
