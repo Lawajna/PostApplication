@@ -24,7 +24,7 @@ PostApplication to aplikacja stworzona w języku Kotlin z użyciem nowoczesnego 
 
 Działanie:  
 
-(https://github.com/user-attachments/assets/a3dc1fd2-1f66-4850-89b7-95eaaba3547c)
+  ![Nagrywanie-ekranu-2025-06-04-085523](https://github.com/user-attachments/assets/073985da-1111-4a26-b306-f1bd46b5ff73)
 
 ---
 
