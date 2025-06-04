@@ -66,13 +66,6 @@ Działanie:
 
 ![Nagrywanie-ekranu-2025-06-04-085036](https://github.com/user-attachments/assets/2a212dcb-e22d-4cdd-b2b1-6d2941609dc3)
 
----
-
-### Obsługa ładowania i błędów
-- Podczas pobierania danych wyświetlany jest wskaźnik ładowania (`CircularProgressIndicator`).
-- W przypadku problemów z połączeniem prezentowany jest komunikat o błędzie.
-
-Działanie:  
 
 ---
 
