@@ -1,7 +1,7 @@
 package com.example.posts.data
 
 import android.content.Context
-import com.example.postapp.data.network.ApiService
+import com.example.posts.data.network.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

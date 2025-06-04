@@ -1,4 +1,4 @@
-package com.example.postapp.data.network
+package com.example.posts.data.network
 
 import com.example.posts.model.Post
 import com.example.posts.model.Todo

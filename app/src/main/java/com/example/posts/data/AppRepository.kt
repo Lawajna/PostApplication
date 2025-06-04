@@ -1,6 +1,6 @@
 package com.example.posts.data
 
-import com.example.postapp.data.network.ApiService
+import com.example.posts.data.network.ApiService
 import com.example.posts.model.Post
 import com.example.posts.model.Todo
 import com.example.posts.model.User
